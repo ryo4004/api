@@ -1,5 +1,7 @@
 import express, { RequestHandler } from 'express'
 
+import historyRouter from './history/index'
+
 const app = express()
 
 app.use(express.json() as RequestHandler)
@@ -17,5 +19,8 @@ app.get('/', (req, res) => {
   console.log('root access')
   res.redirect(301, 'https://winds-n.com')
 })
+
+// history
+app.use('/history', historyRouter)
 
 app.listen(process.env.PORT || 3000)
